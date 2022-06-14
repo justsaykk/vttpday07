@@ -23,17 +23,8 @@ The program will run line by line and its inefficient to let `userInput` wait fo
 
 Therefore, it is more efficient to split it like this:
 
-```java
-// App.java
-Console cons = System.console();
-String userInput = cons.readLine("User to input message");
-```
-
-```java
-// Backend.java
-Socket sock = new Socket();
-String msg = ois.readUTF();
-```
+| ```java<br>// App.java<br>Console cons = System.console();<br>String userInput = cons.readLine("User to input message");<br>``` | ```java<br>// Backend.java<br>Socket sock = new Socket();<br>String msg = ois.readUTF();<br>``` |
+| --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 
 At the same time, we let App.java run on 1 thread, and Backend.java run on another thread.
 
@@ -54,6 +45,10 @@ public class ThrMain implements Runnable {
     @Override
     public void run() {
         System.out.printf(">>> Start %s, %d\n", msg, sec);
+        try {
+            Thread.sleep(sec * 1000);
+        } catch (InterruptedException ex) { }
+        System.out.printf("<<< End %s, %d\n", msg, sec);
     }
 }
 ```
