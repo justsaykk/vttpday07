@@ -12,7 +12,7 @@ public class Reader {
         String str;
         BufferedReader br = new BufferedReader(new FileReader(file));
         while ((str = br.readLine()) != null) {
-            booksList.add(str.toLowerCase());
+            booksList.add(str);
         }
         br.close();
         return booksList;
@@ -20,7 +20,7 @@ public class Reader {
 
     public List<String> search(List<String> bookList, String keyWord) {
         List<String> result = bookList.stream()
-                .filter(el -> el.trim().contains(keyWord))
+                .filter(el -> el.trim().toLowerCase().contains(keyWord))
                 .toList();
         return result;
     }

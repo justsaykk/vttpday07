@@ -25,21 +25,20 @@ public class Main {
             String[] splitString = userInput.split(" ", 2); // input: search java god | output: [search, java god]
             String userCommand = splitString[0].toLowerCase();
             String keyWord = splitString[1];
+            List<String> searchResult = reader.search(bookList, keyWord);
 
             switch (userCommand) {
                 case "search":
-                    List<String> searchResult = reader.search(bookList, keyWord);
                     for (int i = 0; i < searchResult.size(); i++) {
                         System.out.printf("%d. %s\n", i + 1, searchResult.get(i));
                     }
                     break;
                 case "count":
-                    List<String> countResult = reader.search(bookList, keyWord);
                     int count = 0;
-                    for (int i = 0; i < countResult.size(); i++) {
+                    for (int i = 0; i < searchResult.size(); i++) {
                         count++;
                     }
-                    System.out.printf("There are %d books with th phrase %s.\n", count, keyWord);
+                    System.out.printf("There are %d books with the phrase '%s'.\n", count, keyWord);
 
                     break;
                 case "exit":

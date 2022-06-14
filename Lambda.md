@@ -1,4 +1,4 @@
-# Lamda Expression
+# Lambda Expression
 
 ## Anonymous functions in JS (sidetrack)
 
