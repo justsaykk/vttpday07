@@ -23,9 +23,17 @@ The program will run line by line and its inefficient to let `userInput` wait fo
 
 Therefore, it is more efficient to split it like this:
 
-| In App.java | In Backend.java |
-|---|---|
-| ```java<br>Console cons = System.console();<br>String userInput = cons.readLine("User to input message");<br>``` | ```java<br>Socket sock = new Socket();<br>String msg = ois.readUTF();<br>``` |
+```java
+// App.java
+Console cons = System.console();
+String userInput = cons.readLine("User to input message");
+```
+
+```java
+// Backend.java
+Socket sock = new Socket();
+String msg = ois.readUTF();
+```
 
 At the same time, we let App.java run on 1 thread, and Backend.java run on another thread.
 
