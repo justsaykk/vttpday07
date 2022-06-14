@@ -20,7 +20,7 @@ public class Reader {
 
     public List<String> search(List<String> bookList, String keyWord) {
         List<String> result = bookList.stream()
-                .filter(el -> el.trim().toLowerCase().contains(keyWord))
+                .filter(el -> el.trim().toLowerCase().contains(keyWord.toLowerCase()))
                 .toList();
         return result;
     }
